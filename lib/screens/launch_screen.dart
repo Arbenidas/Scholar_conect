@@ -27,7 +27,7 @@ class LaunchScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               const Text(
-                'Connecting students with scholarships to help you succeed!',
+                'Conectando a los estudiantes con las becas!',
                 style: TextStyle(fontSize: 16, color: Colors.black54),
                 textAlign: TextAlign.center,
               ),
@@ -44,7 +44,7 @@ class LaunchScreen extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Get Started',
+                  'Emepezar',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

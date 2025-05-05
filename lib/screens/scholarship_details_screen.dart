@@ -9,7 +9,7 @@ class ScholarshipDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final scholarship =
         ModalRoute.of(context)!.settings.arguments as Scholarship;
-    final dateFormat = DateFormat('MMM dd, yyyy');
+    final dateFormat = DateFormat('dd MMM, yyyy');
 
     return Scaffold(
       appBar: AppBar(
@@ -17,7 +17,7 @@ class ScholarshipDetailsScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text('Scholarship Details'),
+        title: const Text('Detalles de la Beca'),
         actions: [
           IconButton(
             icon: const Icon(Icons.bar_chart),
@@ -45,7 +45,7 @@ class ScholarshipDetailsScreen extends StatelessWidget {
                 children: [
                   // Título de la beca
                   Text(
-                    'Scholarship for Women in Sports and Fitness',
+                    scholarship.title,
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -58,66 +58,58 @@ class ScholarshipDetailsScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: _buildInfoBox(
-                          title: 'Launch date',
-                          content: '12/09/2023',
+                          title: 'Fecha de lanzamiento',
+                          content: dateFormat.format(
+                              scholarship.deadline.subtract(
+                                  const Duration(days: 120))),
                           color: Colors.blue.shade50,
                         ),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
                         child: _buildInfoBox(
-                          title: 'Deadline',
-                          content: '05/01/2024',
+                          title: 'Fecha límite',
+                          content: dateFormat.format(scholarship.deadline),
                           color: Colors.red.shade50,
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 24),
 
                   // Requisitos de elegibilidad
-                  _buildSection(
-                    title: 'Eligibility Requirements:',
-                    content: [
-                      '• Currently enrolled or accepted to an accredited college, university, or vocational school',
-                      '• Pursuing a degree related to sports, physical therapy, fitness studies, or related field',
-                      '• Demonstrated interest in sports or fitness (competitive or recreational)',
-                      '• Minimum cumulative GPA of 3.0',
-                    ],
-                  ),
+                  if (scholarship.eligibilityRequirements.isNotEmpty)
+                    _buildSection(
+                      title: 'Requisitos de Elegibilidad:',
+                      content: scholarship.eligibilityRequirements,
+                    ),
 
                   // Materiales de aplicación
-                  _buildSection(
-                    title: 'Application Materials:',
-                    content: [
-                      '• Completed application form',
-                      '• Official academic transcript',
-                      '• Two letters of recommendation (one from a coach/fitness educator and one from an academic reference)',
-                      '• Personal statement (500-750 words) describing your passion for sports/fitness, career goals, and how this scholarship will help you achieve them',
-                    ],
-                  ),
+                  if (scholarship.applicationMaterials.isNotEmpty)
+                    _buildSection(
+                      title: 'Materiales de Aplicación:',
+                      content: scholarship.applicationMaterials,
+                    ),
 
                   // Información adicional
                   _buildSection(
-                    title: 'Additional Information:',
+                    title: 'Información Adicional:',
                     content: [
-                      '• Award amount: \$3,500 per academic year',
-                      '• Renewable for up to four years if academic standards are maintained',
-                      '• Application deadline: Oct 15, 2023',
-                      '• Funds disbursed directly to educational institution',
+                      '• Monto de la beca: \$${scholarship.amount} por año académico',
+                      '• Renovable si se mantienen los estándares académicos',
+                      '• Fecha límite para aplicar: ${dateFormat.format(scholarship.deadline)}',
+                      '• Fondos entregados directamente a la institución educativa',
                     ],
                   ),
 
                   // Criterios de selección
-                  _buildSection(
-                    title: 'Selection Criteria:',
-                    content: [
-                      '• Academic merit (30%)',
-                      '• Sports/fitness achievement and dedication (30%)',
-                      '• Financial need (15%)',
-                      '• Personal statement and community involvement (25%)',
-                    ],
-                  ),
+                  if (scholarship.selectionCriteria.isNotEmpty)
+                    _buildSection(
+                      title: 'Criterios de Selección:',
+                      content: scholarship.selectionCriteria.entries
+                          .map((e) =>
+                              '• ${e.key} (${e.value}%)')
+                          .toList(),
+                    ),
 
                   const SizedBox(height: 24),
 
@@ -136,7 +128,7 @@ class ScholarshipDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        'Apply Now',
+                        'Aplicar Ahora',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -158,23 +150,23 @@ class ScholarshipDetailsScreen extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Inicio',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'Scholarships',
+            label: 'Becas',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
-            label: 'Messages',
+            label: 'Mensajes',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),
-            label: 'Notifications',
+            label: 'Notificaciones',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Perfil',
           ),
         ],
         onTap: (index) {

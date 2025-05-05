@@ -43,7 +43,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text('Search Results'),
+        title: const Text('Resultados de busqueda'),
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_list),
@@ -56,7 +56,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _scholarships.isEmpty
-              ? const Center(child: Text('No scholarships found'))
+              ? const Center(child: Text('No se encontraron becas'))
               : ListView.builder(
                   padding: const EdgeInsets.all(16),
                   itemCount: _scholarships.length,
@@ -77,19 +77,19 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'Scholarships',
+            label: 'Becas',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
-            label: 'Messages',
+            label: 'Mensajes',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),
-            label: 'Notifications',
+            label: 'Notificaciones',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Perfil',
           ),
         ],
         onTap: (index) {

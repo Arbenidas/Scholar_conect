@@ -26,12 +26,12 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   const SizedBox(height: 40),
                   const Text(
-                    'Create Account',
+                    'Crea una nueva cuenta',
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'Join us to discover scholarship opportunities\ntailored for you!',
+                    'Unete a nosotros para descubrir becas increibles!',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 14, color: Colors.black54),
                   ),
@@ -42,7 +42,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   // Email field
                   TextFormField(
                     decoration: InputDecoration(
-                      hintText: 'Your email address',
+                      hintText: 'Tu dirección de correo',
                       prefixIcon: const Icon(Icons.email_outlined),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -55,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
+                        return 'Por favor ingresa tu correo electrónico';
                       }
                       return null;
                     },
@@ -65,7 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   // Password field
                   TextFormField(
                     decoration: InputDecoration(
-                      hintText: 'Create a password',
+                      hintText: 'Nueva Contraseña',
                       prefixIcon: const Icon(Icons.lock_outline),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -78,7 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter a password';
+                        return 'Por favor ingresa una contraseña';
                       }
                       return null;
                     },
@@ -88,7 +88,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   // Full name field
                   TextFormField(
                     decoration: InputDecoration(
-                      hintText: 'Enter your full name',
+                      hintText: 'Ingresa tu nombre completo',
                       prefixIcon: const Icon(Icons.person_outline),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -100,7 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your name';
+                        return 'Por favor ingrese su nombre';
                       }
                       return null;
                     },
@@ -120,7 +120,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         activeColor: Colors.blue,
                       ),
                       const Text(
-                        'I agree with Terms & Conditions',
+                        'Acepto los terminos y condiciones',
                         style: TextStyle(fontSize: 14),
                       ),
                     ],
@@ -136,7 +136,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(
-                              'Please accept the terms and conditions',
+                              'Por favor acepta los terminos y condiciones',
                             ),
                           ),
                         );
@@ -150,7 +150,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     child: const Text(
-                      'Sign Up',
+                      'Registrarse',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -165,7 +165,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Already registered?',
+                        'Ya estas registrado?',
                         style: TextStyle(color: Colors.black54),
                       ),
                       TextButton(
@@ -175,7 +175,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           Navigator.pushReplacementNamed(context, '/home');
                         },
                         child: const Text(
-                          'Log In',
+                          'Iniciar sesión',
                           style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.bold,

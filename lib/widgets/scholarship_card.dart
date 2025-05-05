@@ -72,7 +72,7 @@ class ScholarshipCard extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                       ),
                       child: Text(
-                        scholarship.isSaved ? 'Save' : 'Share',
+                        scholarship.isSaved ? 'Guardada' : 'Agregar',
                         style: const TextStyle(fontSize: 12),
                       ),
                     ),
