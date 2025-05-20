@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../utils/constants.dart';
 import '../widgets/filter_section.dart';
+import '../widgets/bottom_navigation.dart';
 
 class SearchScholarshipsScreen extends StatefulWidget {
   const SearchScholarshipsScreen({Key? key}) : super(key: key);
@@ -19,13 +21,13 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
 
   // Requisitos
   final Map<String, bool> _requirements = {
-  'Promedio mínimo (GPA)': false,
-  'Ensayo / Declaración personal': false,
-  'Envío creativo': false,
-  'Carta de presentación': false,
-  'Entrevista en línea': false,
-  'Afiliación religiosa': false,
-};
+    'Minimum GPA': false,
+    'Essay/Personal Statement': false,
+    'Creative Submission': false,
+    'Cover Letter': false,
+    'Online Interview': false,
+    'Religious Affiliation': false,
+  };
 
   @override
   void dispose() {
@@ -59,7 +61,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text('Buscar Becas'),
+        title: const Text('Search Scholarships'),
         actions: [
           IconButton(
             icon: const Icon(Icons.bar_chart),
@@ -77,7 +79,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
               TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Buscar...',
+                  hintText: 'Search...',
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -92,7 +94,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
 
               // Título de filtros
               const Text(
-                'Filtros de Becas',
+                'Scholarship Search Filters',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -102,7 +104,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
 
               // Nivel educativo
               FilterSection(
-                title: 'Nivel de educación',
+                title: 'Educational Level',
                 child: TextField(
                   readOnly: true,
                   onTap: () {
@@ -113,7 +115,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
                     );
                   },
                   decoration: InputDecoration(
-                    hintText: _educationalLevel ?? 'Selecciona el nivel de educación',
+                    hintText: _educationalLevel ?? 'Select educational level',
                     suffixIcon: const Icon(Icons.arrow_drop_down),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -126,7 +128,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
 
               // Área de estudio
               FilterSection(
-                title: 'Área de estudio',
+                title: 'Area of Study',
                 child: TextField(
                   readOnly: true,
                   onTap: () {
@@ -137,7 +139,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
                     );
                   },
                   decoration: InputDecoration(
-                    hintText: _areaOfStudy ?? 'Selecciona una área específica de estudio',
+                    hintText: _areaOfStudy ?? 'Select a specific area of study',
                     suffixIcon: const Icon(Icons.arrow_drop_down),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -150,7 +152,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
 
               // Rango de monto
               FilterSection(
-                title: 'Precio',
+                title: 'Amount',
                 child: Column(
                   children: [
                     RangeSlider(
@@ -181,7 +183,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
 
               // Requisitos
               FilterSection(
-                title: 'Requerimientos',
+                title: 'Requirements',
                 child: Column(
                   children: _requirements.entries.map((entry) {
                     return CheckboxListTile(
@@ -214,9 +216,8 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
                     ),
                   ),
                   child: const Text(
-                    'Buscar',
+                    'Search',
                     style: TextStyle(
-                      color: Colors.white, 
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -227,49 +228,17 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1, // Scholarships tab
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Becas',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Mensajes',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notificacines',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.pushReplacementNamed(context, '/home');
-          }
-        },
-      ),
+      bottomNavigationBar: const BottomNavigation(currentIndex: 1),
     );
   }
 
   Widget _buildEducationalLevelPicker() {
     final levels = [
-      'Secundaria',
-      'Pregrado',
-      'Posgrado',
-      'Doctorado',
-      'Postdoctorado',
+      'High School',
+      'Undergraduate',
+      'Graduate',
+      'Doctoral',
+      'Post-Doctoral',
     ];
 
     return Container(
@@ -279,7 +248,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Selecciona un nivel de educación',
+            'Select Educational Level',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -309,16 +278,16 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
 
   Widget _buildAreaOfStudyPicker() {
     final areas = [
-      'Informática',
-      'Ingeniería',
-      'Negocios',
-      'Medicina',
-      'Derecho',
-      'Artes',
-      'Humanidades',
-      'Ciencias Sociales',
-      'Ciencias Naturales',
-      'Educación',
+      'Computer Science',
+      'Engineering',
+      'Business',
+      'Medicine',
+      'Law',
+      'Arts',
+      'Humanities',
+      'Social Sciences',
+      'Natural Sciences',
+      'Education',
     ];
 
     return Container(
@@ -328,7 +297,7 @@ class _SearchScholarshipsScreenState extends State<SearchScholarshipsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Selecciona el área de estudio',
+            'Select Area of Study',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,

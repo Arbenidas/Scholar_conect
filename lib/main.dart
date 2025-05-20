@@ -6,6 +6,9 @@ import 'screens/home_screen.dart';
 import 'screens/search_scholarships_screen.dart';
 import 'screens/search_results_screen.dart';
 import 'screens/scholarship_details_screen.dart';
+import 'screens/profile/profile_screen.dart';
+import 'screens/messages/messages_screen.dart';
+import 'screens/notifications/notifications_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,7 +58,14 @@ class MyApp extends StatelessWidget {
         '/search-scholarships': (context) => const SearchScholarshipsScreen(),
         '/search-results': (context) => const SearchResultsScreen(),
         '/scholarship-details': (context) => const ScholarshipDetailsScreen(),
+        '/profile': (context) => const ProfileScreen(),
+        '/messages': (context) => const MessagesScreen(),
+        '/notifications': (context) => const NotificationsScreen(),
       },
+      // Configuración para mantener el estado de las pantallas
+      navigatorObservers: [
+        HeroController(),
+      ],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/scholarship.dart';
 import '../services/scholarship_service.dart';
+import '../widgets/bottom_navigation.dart';
 
 class SearchResultsScreen extends StatefulWidget {
   const SearchResultsScreen({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text('Resultados de busqueda'),
+        title: const Text('Search Results'),
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_list),
@@ -56,7 +57,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _scholarships.isEmpty
-              ? const Center(child: Text('No se encontraron becas'))
+              ? const Center(child: Text('No scholarships found'))
               : ListView.builder(
                   padding: const EdgeInsets.all(16),
                   itemCount: _scholarships.length,
@@ -65,39 +66,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                     return _buildScholarshipItem(scholarship);
                   },
                 ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1, // Scholarships tab
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Becas',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Mensajes',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notificaciones',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
-        ],
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.pushReplacementNamed(context, '/home');
-          }
-        },
-      ),
+      bottomNavigationBar: const BottomNavigation(currentIndex: 1),
     );
   }
 
