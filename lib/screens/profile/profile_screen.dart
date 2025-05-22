@@ -29,12 +29,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Profile'),
+        title: const Text('Mi Perfil'),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
             onPressed: () => _navigateToEditProfile(),
-            tooltip: 'Edit Profile',
+            tooltip: 'Editar Perfil',
           ),
         ],
       ),
@@ -48,14 +48,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           if (snapshot.hasError) {
             return Center(
               child: Text(
-                'Error loading profile: ${snapshot.error}',
+                'Error al cargar el perfil: ${snapshot.error}',
                 style: const TextStyle(color: Colors.red),
               ),
             );
           }
 
           if (!snapshot.hasData) {
-            return const Center(child: Text('No profile data found'));
+            return const Center(child: Text('No se encontraron datos de perfil'));
           }
 
           final user = snapshot.data!;
@@ -100,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   textAlign: TextAlign.center,
                 ),
 
-                // Email
+                // Correo electrónico
                 Text(
                   user.email,
                   style: TextStyle(
@@ -138,26 +138,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
           // Información académica
           _buildSection(
-            title: 'Academic Information',
+            title: 'Información Académica',
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildInfoRow(
                   icon: Icons.school,
-                  label: 'University',
-                  value: user.university ?? 'Not specified',
+                  label: 'Universidad',
+                  value: user.university ?? 'No especificado',
                 ),
                 const SizedBox(height: 12),
                 _buildInfoRow(
                   icon: Icons.book,
-                  label: 'Major',
-                  value: user.major ?? 'Not specified',
+                  label: 'Carrera',
+                  value: user.major ?? 'No especificado',
                 ),
                 const SizedBox(height: 12),
                 _buildInfoRow(
                   icon: Icons.calendar_today,
-                  label: 'Graduation Year',
-                  value: user.graduationYear?.toString() ?? 'Not specified',
+                  label: 'Año de Graduación',
+                  value: user.graduationYear?.toString() ?? 'No especificado',
                 ),
               ],
             ),
@@ -166,7 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           // Biografía
           if (user.bio != null && user.bio!.isNotEmpty)
             _buildSection(
-              title: 'About Me',
+              title: 'Sobre Mí',
               content: Text(
                 user.bio!,
                 style: const TextStyle(
@@ -179,7 +179,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           // Intereses
           if (user.interests.isNotEmpty)
             _buildSection(
-              title: 'Interests',
+              title: 'Intereses',
               content: Wrap(
                 spacing: 8,
                 runSpacing: 8,
@@ -195,20 +195,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
           // Información de contacto
           _buildSection(
-            title: 'Contact Information',
+            title: 'Información de Contacto',
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildInfoRow(
                   icon: Icons.email,
-                  label: 'Email',
+                  label: 'Correo Electrónico',
                   value: user.email,
                 ),
                 if (user.phoneNumber != null) ...[
                   const SizedBox(height: 12),
                   _buildInfoRow(
                     icon: Icons.phone,
-                    label: 'Phone',
+                    label: 'Teléfono',
                     value: user.phoneNumber!,
                   ),
                 ],
@@ -231,7 +231,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Sign Out'),
+                child: const Text('Cerrar Sesión'),
               ),
             ),
           ),
@@ -322,16 +322,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Sign Out'),
-        content: const Text('Are you sure you want to sign out?'),
+        title: const Text('Cerrar Sesión'),
+        content: const Text('¿Estás seguro de que deseas cerrar sesión?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: const Text('Cancelar'),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Sign Out'),
+            child: const Text('Cerrar Sesión'),
             style: TextButton.styleFrom(foregroundColor: Colors.red),
           ),
         ],

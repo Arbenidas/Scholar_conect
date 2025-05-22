@@ -9,11 +9,11 @@ class UserService {
     profileImageUrl:
         'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-QrfGd4SsgvCgOsRiL3cXjb4Q7HGemR.png',
     university: 'State University',
-    major: 'Computer Science',
+    major: 'Ciencias de la Computación',
     graduationYear: 2025,
-    interests: ['Technology', 'Design', 'Mathematics'],
+    interests: ['Tecnología', 'Diseño', 'Matemáticas'],
     bio:
-        'Computer Science student passionate about UI/UX design and mobile development.',
+        'Estudiante de ciencias de la computación, apasionado de UX/UI y desarrollo de aplicaciones moviles.',
     phoneNumber: '(555) 123-4567',
     location: 'San Francisco, CA',
   );

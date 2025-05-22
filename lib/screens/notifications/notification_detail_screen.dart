@@ -450,29 +450,29 @@ class NotificationDetailScreen extends StatelessWidget {
         const SizedBox(height: 12),
         SizedBox(
           width: double.infinity,
-          child: OutlinedButton(
-            onPressed: () {
-              // Eliminar notificación
-              final notificationService = NotificationService();
-              notificationService.deleteNotification(notification.id);
-              Navigator.pop(context);
-            },
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.grey[700],
-              side: BorderSide(color: Colors.grey[400]!),
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            child: const Text(
-              'Eliminar notificación',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          // child: OutlinedButton(
+          //   onPressed: () {
+          //     // Eliminar notificación
+          //     final notificationService = NotificationService();
+          //     notificationService.deleteNotification(notification.id);
+          //     Navigator.pop(context);
+          //   },
+          //   style: OutlinedButton.styleFrom(
+          //     foregroundColor: Colors.grey[700],
+          //     side: BorderSide(color: Colors.grey[400]!),
+          //     padding: const EdgeInsets.symmetric(vertical: 12),
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(8),
+          //     ),
+          //   ),
+          //   child: const Text(
+          //     'Eliminar notificación',
+          //     style: TextStyle(
+          //       fontSize: 16,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          // ),
         ),
       ],
     );

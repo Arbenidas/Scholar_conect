@@ -63,7 +63,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Profile'),
+        title: const Text('Editar Perfil'),
         actions: [
           TextButton(
             onPressed: _isSaving ? null : _saveProfile,
@@ -77,7 +77,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                   )
                 : const Text(
-                    'Save',
+                    'Guardar',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -134,7 +134,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                 // Información personal
                 const Text(
-                  'Personal Information',
+                  'Información personal',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -147,13 +147,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 TextFormField(
                   controller: _fullNameController,
                   decoration: const InputDecoration(
-                    labelText: 'Full Name',
+                    labelText: 'Nombre completo',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.person),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your full name';
+                      return 'Por favor ingresa tu nombre completo';
                     }
                     return null;
                   },
@@ -164,7 +164,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 TextFormField(
                   controller: _locationController,
                   decoration: const InputDecoration(
-                    labelText: 'Location',
+                    labelText: 'Ubicación',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.location_on),
                   ),
@@ -175,7 +175,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 TextFormField(
                   controller: _phoneNumberController,
                   decoration: const InputDecoration(
-                    labelText: 'Phone Number',
+                    labelText: 'Teléfono',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.phone),
                   ),
@@ -185,7 +185,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                 // Información académica
                 const Text(
-                  'Academic Information',
+                  'Información académica',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -198,7 +198,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 TextFormField(
                   controller: _universityController,
                   decoration: const InputDecoration(
-                    labelText: 'University',
+                    labelText: 'Universidad',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.school),
                   ),
@@ -209,7 +209,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 TextFormField(
                   controller: _majorController,
                   decoration: const InputDecoration(
-                    labelText: 'Major',
+                    labelText: 'Carrera',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.book),
                   ),
@@ -220,7 +220,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 TextFormField(
                   controller: _graduationYearController,
                   decoration: const InputDecoration(
-                    labelText: 'Graduation Year',
+                    labelText: 'Año de graduación',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.calendar_today),
                   ),
@@ -229,11 +229,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     if (value != null && value.isNotEmpty) {
                       final year = int.tryParse(value);
                       if (year == null) {
-                        return 'Please enter a valid year';
+                        return 'Por favor ingrese un año valido';
                       }
                       final currentYear = DateTime.now().year;
                       if (year < currentYear - 10 || year > currentYear + 10) {
-                        return 'Please enter a reasonable graduation year';
+                        return 'Por favor ingrese un año de graduación valido';
                       }
                     }
                     return null;
@@ -243,7 +243,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                 // Biografía
                 const Text(
-                  'About Me',
+                  'Sobre mi',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -265,7 +265,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                 // Intereses
                 const Text(
-                  'Interests',
+                  'Intereses',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -292,7 +292,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     }).toList(),
                     ActionChip(
                       avatar: const Icon(Icons.add, size: 18),
-                      label: const Text('Add Interest'),
+                      label: const Text('Agregar Interes'),
                       backgroundColor: Colors.grey.shade200,
                       onPressed: _addInterest,
                     ),
@@ -313,14 +313,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Change Profile Picture'),
+        title: const Text('Cambiar imagen de perfil'),
         content: const Text(
-          'This feature would allow you to select a new profile picture from your gallery or camera.',
+          'Esta característica te permitira seleccionar una imagen de tu dispositivo.',
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: const Text('Cerrar'),
           ),
         ],
       ),
@@ -333,11 +333,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Add Interest'),
+        title: const Text('Agregar intereses'),
         content: TextField(
           controller: interestController,
           decoration: const InputDecoration(
-            labelText: 'Interest',
+            labelText: 'Intereses',
             border: OutlineInputBorder(),
           ),
           autofocus: true,
@@ -346,7 +346,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: const Text('Cancelar'),
           ),
           TextButton(
             onPressed: () {
@@ -358,7 +358,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               }
               Navigator.pop(context);
             },
-            child: const Text('Add'),
+            child: const Text('Agregar'),
           ),
         ],
       ),
@@ -393,14 +393,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           if (success) {
             // Mostrar mensaje de éxito y volver a la pantalla de perfil
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Profile updated successfully')),
+              const SnackBar(content: Text('Perfil actualizado con exito')),
             );
             Navigator.pop(context, true);
           } else {
             // Mostrar mensaje de error
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('Failed to update profile'),
+                content: Text('Error al actualizar el perfil'),
                 backgroundColor: Colors.red,
               ),
             );
